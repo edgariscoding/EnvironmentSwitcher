@@ -36,9 +36,9 @@ using System.Security.AccessControl;
  * ***** END LICENSE BLOCK *****
  */
 
-namespace HostSwitcher
+namespace EnvironmentSwitcher
 {
-    public class HostFileManager
+    public class WebConfigFileManager
     {
         //private static readonly string HostsFile = @"\usr\tmp\Hosts";
         private static readonly string HostsFile = @"\Windows\System32\Drivers\Etc\Hosts";

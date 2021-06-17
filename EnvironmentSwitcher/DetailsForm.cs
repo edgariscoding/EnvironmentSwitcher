@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
-using MutexManager;
+using System.Drawing;
 
 /*
  * The official license for this file is shown next.
@@ -35,34 +35,35 @@ using MutexManager;
  * ***** END LICENSE BLOCK *****
  */
 
-namespace HostSwitcher
+namespace EnvironmentSwitcher
 {
-    /// <summary>
-    /// Framework for restricting app to a single instance and for running as a tray app.
-    /// </summary>
-    static class Program
+    public partial class DetailsForm : Form
     {
-        /// <summary>
-        /// The main entry point for the application.
-        /// </summary>
-        [STAThread]
-        static void Main()
-        {
-            if (!SingleInstance.Start()) { return; }
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            try
-            {
-                var applicationContext = new CustomApplicationContext();
-                Application.Run(applicationContext);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Program Terminated Unexpectedly",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            SingleInstance.Stop();
+        public WebConfigManager HostManager { get; set; }
 
+        public DetailsForm()
+        {
+            InitializeComponent();
+            hostsDataGridView.CellFormatting += hostsDataGridView_CellFormatting;
         }
+
+        private void DetailsForm_Load(object sender, EventArgs e)
+        {
+            if (HostManager != null)
+            {
+                HostManager.BuildServerAssociations();
+                HostManager.GenerateHostsDetails(hostsDataGridView);
+            }
+        }
+
+        private void hostsDataGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            hostsDataGridView[e.ColumnIndex, e.RowIndex].Style.BackColor =
+                HostManager.IsEnabled(hostsDataGridView[WebConfigManager.EnabledColumnNumber, e.RowIndex].Value.ToString())
+                    ? Color.LightGreen
+                    : Color.LightGray;
+        }
+
+
     }
 }

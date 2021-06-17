@@ -1,7 +1,9 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HostSwitcher", "HostSwitcher\HostSwitcher.csproj", "{F6E5F498-BC1A-46F7-8DDA-3C5D3282357F}"
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31402.337
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnvironmentSwitcher", "EnvironmentSwitcher\EnvironmentSwitcher.csproj", "{F6E5F498-BC1A-46F7-8DDA-3C5D3282357F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfFormLibrary", "WpfFormLibrary\WpfFormLibrary.csproj", "{F4B7E37D-CD21-493D-AD37-CA7263DB2F54}"
 EndProject
@@ -50,5 +52,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CA1403E9-BD28-4561-AA39-F587423E6E21}
 	EndGlobalSection
 EndGlobal

@@ -5,7 +5,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
 
-namespace HostSwitcher
+namespace EnvironmentSwitcher
 {
     // This class from Rhys Jones answer
     // on http://stackoverflow.com/questions/1699642/how-to-sort-databound-datagridview-column
