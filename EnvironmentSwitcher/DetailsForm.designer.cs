@@ -1,4 +1,4 @@
-﻿namespace HostSwitcher
+﻿namespace EnvironmentSwitcher
 {
     partial class DetailsForm
     {

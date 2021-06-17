@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("HostSwitcher")]
+[assembly: AssemblyTitle("EnvironmentSwitcher")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("HostSwitcher")]
-[assembly: AssemblyCopyright("Copyright © Michael Sorens 2010")]
+[assembly: AssemblyProduct("EnvironmentSwitcher")]
+[assembly: AssemblyCopyright("Copyright © Edgar Sanchez 2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

@@ -42,7 +42,7 @@ using System.Reflection;
  * ***** END LICENSE BLOCK *****
  */
 
-namespace HostSwitcher
+namespace EnvironmentSwitcher
 {
 
     /// <summary>
@@ -57,7 +57,7 @@ namespace HostSwitcher
         // Icon graphic from http://prothemedesign.com/circular-icons/
         private static readonly string IconFileName = "route.ico";
         private static readonly string DefaultTooltip = "Route HOST entries via context menu";
-        private readonly HostManager hostManager;
+        private readonly WebConfigManager hostManager;
 
         /// <summary>
 		/// This class should be created and passed into Application.Run( ... )
@@ -65,7 +65,7 @@ namespace HostSwitcher
 		public CustomApplicationContext() 
 		{
 			InitializeContext();
-            hostManager = new HostManager(notifyIcon);
+            hostManager = new WebConfigManager(notifyIcon);
             hostManager.BuildServerAssociations();
             if (!hostManager.IsDecorated) { ShowIntroForm(); }
 		}

@@ -40,19 +40,19 @@ using System.Reflection;
  * ***** END LICENSE BLOCK *****
  */
 
-namespace HostSwitcher
+namespace EnvironmentSwitcher
 {
-    public class HostManager
+    public class WebConfigManager
     {
 
         private static readonly int MaxTooltipLength = 63; // framework constraint
 
-        private readonly HostFileManager hostFileManager = new HostFileManager();
+        private readonly WebConfigFileManager hostFileManager = new WebConfigFileManager();
         private Dictionary<string, IEnumerable<ServerGroup>> projectDict = new Dictionary<string, IEnumerable<ServerGroup>>();
         private List<string> hostFileData;
         private readonly NotifyIcon notifyIcon;
 
-        public HostManager(NotifyIcon notifyIcon)
+        public WebConfigManager(NotifyIcon notifyIcon)
         {
             this.notifyIcon = notifyIcon;
         }

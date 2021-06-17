@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
-using System.Drawing;
+using MutexManager;
 
 /*
  * The official license for this file is shown next.
@@ -35,35 +35,34 @@ using System.Drawing;
  * ***** END LICENSE BLOCK *****
  */
 
-namespace HostSwitcher
+namespace EnvironmentSwitcher
 {
-    public partial class DetailsForm : Form
+    /// <summary>
+    /// Framework for restricting app to a single instance and for running as a tray app.
+    /// </summary>
+    static class Program
     {
-        public HostManager HostManager { get; set; }
-
-        public DetailsForm()
+        /// <summary>
+        /// The main entry point for the application.
+        /// </summary>
+        [STAThread]
+        static void Main()
         {
-            InitializeComponent();
-            hostsDataGridView.CellFormatting += hostsDataGridView_CellFormatting;
-        }
-
-        private void DetailsForm_Load(object sender, EventArgs e)
-        {
-            if (HostManager != null)
+            if (!SingleInstance.Start()) { return; }
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            try
             {
-                HostManager.BuildServerAssociations();
-                HostManager.GenerateHostsDetails(hostsDataGridView);
+                var applicationContext = new CustomApplicationContext();
+                Application.Run(applicationContext);
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Program Terminated Unexpectedly",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            SingleInstance.Stop();
+
         }
-
-        private void hostsDataGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-            hostsDataGridView[e.ColumnIndex, e.RowIndex].Style.BackColor =
-                HostManager.IsEnabled(hostsDataGridView[HostManager.EnabledColumnNumber, e.RowIndex].Value.ToString())
-                    ? Color.LightGreen
-                    : Color.LightGray;
-        }
-
-
     }
 }
